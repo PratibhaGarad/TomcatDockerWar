@@ -28,8 +28,7 @@ stage("Docker build") {
 stage("Deploy to staging") {
      steps {
           
-          sh "docker stop \$(docker ps -qa)"
-          sh "docker rm \$(docker ps -qa)"
+   
           sh "docker run -d -it -v /root/.jenkins/workspace/tomcat-docker-pipeline/target/:/usr/local/tomcat/webapps/ -p 8081:8080 --name Testtomcat deepak_tomcat"
      }
 }
